@@ -8,6 +8,8 @@ from PyQt5.QtWidgets import QMainWindow, QApplication, QFileDialog
 
 from huffman_code5.huffmanUI import Ui_MainWindow
 
+from huffman_code5.controller import *
+
 
 class MyCalcWindow(Ui_MainWindow, QMainWindow):
     def __init__(self):
@@ -19,10 +21,11 @@ class MyCalcWindow(Ui_MainWindow, QMainWindow):
     def connecter(self):
         self.pushButton_open.clicked.connect(self.press_open)
         self.pushButton_encode.clicked.connect(self.press_encode)
-        self.pushButton_decode.clicked.connect(self.press_encode)
+        self.pushButton_decode.clicked.connect(self.press_decode)
 
     def press_open(self):
         fileName, imgType = QFileDialog.getOpenFileName(self, "打开txt文件", "", "*.txt;;All Files(*)")
+        self.file = fileName
         print(type(fileName))
         try:
             with open(fileName, mode='r', encoding='utf-8') as f:
@@ -33,17 +36,8 @@ class MyCalcWindow(Ui_MainWindow, QMainWindow):
             print(e)
 
     def press_encode(self):
-        pass
-
-    def press_encode(self):
-        pass
-
-
-def main():
-    app = QApplication(sys.argv)
-    Calc = MyCalcWindow()
-    sys.exit(app.exec_())
-
-
-if __name__ == '__main__':
-    main()
+        bin = getEncoding(filename=self.file)
+        self.textEdit_encode.setText(bin)
+    def press_decode(self):
+        decodes = getDecoding(filename=self.file)
+        self.textEdit_decode.setText(decodes)
