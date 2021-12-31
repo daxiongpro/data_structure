@@ -1,9 +1,5 @@
 # Time: 2020/5/19-11:05
 # Author: Rex
-
-import sys
-
-from PyQt5 import QtGui
 from PyQt5.QtWidgets import QMainWindow, QApplication, QFileDialog
 
 from huffman_code5.huffmanUI import Ui_MainWindow
@@ -11,9 +7,9 @@ from huffman_code5.huffmanUI import Ui_MainWindow
 from huffman_code5.controller import *
 
 
-class MyCalcWindow(Ui_MainWindow, QMainWindow):
+class MyHuffmanWindow(Ui_MainWindow, QMainWindow):
     def __init__(self):
-        super(MyCalcWindow, self).__init__()
+        super(MyHuffmanWindow, self).__init__()
         self.setupUi(self)
         self.connecter()
         self.show()

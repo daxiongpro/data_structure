@@ -4,7 +4,7 @@ import sys
 
 from PyQt5.QtWidgets import QApplication
 
-from huffman_code5.view import MyCalcWindow
+from huffman_code5.view import MyHuffmanWindow
 
 
 def read_file():
@@ -32,7 +32,7 @@ def main2():
 
 def main():
     app = QApplication(sys.argv)
-    Calc = MyCalcWindow()
+    huffman = MyHuffmanWindow()
     sys.exit(app.exec_())
 
 
